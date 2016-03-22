@@ -22,10 +22,10 @@
 	</form>
 
 	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="item in items | orderBy:'priority' track by item._id">{{item.name}}
+		<li class="list-group-item" ng-repeat="item in items track by item._id">{{item.name}}
 			<span class="pull-right">
-				<button class="btn btn-sm btn-success" ng-hide="$index === 0">^</button>
-				<button class="btn btn-sm btn-info" ng-hide="$index === items.length-1">v</button>
+				<button class="btn btn-sm btn-info" ng-hide="$index === 0" ng-click="swapUp($index)">^</button>
+				<button class="btn btn-sm btn-secondary" ng-hide="$index === items.length-1" ng-click="swapDown($index)">v</button>
 				<span class="badge">{{item.priority}}</span>
 			</span>
 		</li>

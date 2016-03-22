@@ -1,5 +1,3 @@
-// var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost/nwindspa');
 var models = require('./models').models;
 
 var newItems = [
@@ -7,11 +5,17 @@ var newItems = [
 {name:'carrots', priority:2}
 ];
 
-models.Item.remove({})
-.then(function() {
-	return models.Item.create(newItems);
-})
-.then(function(items){
-	return console.log('new Items created: ', items);
+function seed() {
+	models.Item.remove({})
+	.then(function() {
+		return models.Item.create(newItems);
 	})
-.catch(console.log);
+	.then(function(items){
+		console.log('new Items created: ', items);
+		process.exit(0);
+		})
+	.catch(console.log);
+}
+
+seed();
+
