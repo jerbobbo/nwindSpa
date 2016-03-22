@@ -2,19 +2,19 @@
 
 To install dependencies, run:
 
-	<b>npm install</b>
+	npm install
 
 To seed database, run:
 
-	<b>node seed</b>
+	node seed
 
 To run application, run:
 
-	<b>npm start</b>
+	npm start
 
 To view in browser, visit:
 
-	<b>localhost:3000</b>
+	localhost:3000
 
 
 Enjoy!
