@@ -12,7 +12,7 @@ function seed() {
 	})
 	.then(function(items){
 		console.log('new Items created: ', items);
-		process.exit(0);
+		process.exit(0);//ok.. but you might want to use this in tests? perhaps
 		})
 	.catch(console.log);
 }

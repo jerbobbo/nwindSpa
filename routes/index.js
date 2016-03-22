@@ -5,7 +5,7 @@ var Item = models.Item;
 var Promise = require('bluebird');
 
 router.get('/', function(req, res, next) {
-	res.send('index.js');
+	res.send('index.js');//how does this work
 });
 
 router.get('/items', function(req, res, next) {
@@ -16,8 +16,9 @@ router.get('/items', function(req, res, next) {
 	});
 });
 
+//make it restful
 router.post('/addItem', function(req, res, next) {
-	var priorityInt = +req.body.priority || 5;
+	var priorityInt = +req.body.priority || 5;//set defaults in model
 	Item.create({name: req.body.name, priority: priorityInt})
 	.then(function(newItem) {
 		res.send(newItem);
@@ -26,7 +27,7 @@ router.post('/addItem', function(req, res, next) {
 
 router.post('/reorder', function(req, res, next) {
 	console.log(req.body);
-	var items = req.body.itemArray;
+	var items = req.body.itemArray;//great!
 	Promise.each(items, function(item, index) {
 		Item.findById(item._id)
 		.then(function(_item) {

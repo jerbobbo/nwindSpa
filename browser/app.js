@@ -3,7 +3,8 @@ var app = angular.module('myApp', []);
 
 app.controller('mainController', function($http, $scope) {
 
-	$scope.getItems = function(){
+  //don't put things on scope that don't have to be on scope
+	var getItems = function(){
 		$http.get('/items')
 		.then(function(items) {
 			console.log('items: ',items.data);
@@ -12,40 +13,38 @@ app.controller('mainController', function($http, $scope) {
 	};
 
 	$scope.addItem = function() {
+    //you could use object properties with ng-model
+    //example <input ng-model='newItem.name' />
+    //example <input ng-model='newItem.priority' />
+    //this way you can do $http.post('/addItem', newItem)
 		$http.post('/addItem', {name: $scope.newName, priority: $scope.newPriority})
-		.then(function(newItem){
-			console.log('item added to items: ', $scope.items);
-			return $scope.getItems();
+		.then(function(){
+			return getItems();
 		});
 	};
 
 	$scope.swapUp = function(index) {
-		//console.log(index);
 		var oldVal = $scope.items[index];
 		$scope.items[index] = $scope.items[index-1];
 		$scope.items[index-1] = oldVal;
-		//console.log($scope.items);
 		$scope.reOrder();
 	};
 
 	$scope.swapDown = function(index) {
-		//console.log(index);
 		var oldVal = $scope.items[index];
 		$scope.items[index] = $scope.items[index+1];
 		$scope.items[index+1] = oldVal;
-		//console.log($scope.items);
-		$scope.reOrder();
+		reOrder();
 	};
 
-	$scope.reOrder = function() {
+	var reOrder = function() {
 		//console.log('reordering', $scope.items);
 		$http.post('/reorder', {itemArray: $scope.items})
-		.then(function(item) {
-			return $scope.getItems();
+		.then(function() {
+			getItems();
 		});
 	};
 
-	$scope.getItems();
-	//$scope.reOrder();
+	getItems();
 
 });

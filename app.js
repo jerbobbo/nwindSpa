@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, '/browser')));
 app.use('/vendor', express.static(path.join(__dirname, '/node_modules')));
 
 app.use(bodyParser.json());
+//we need this?
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(require('./routes'));
