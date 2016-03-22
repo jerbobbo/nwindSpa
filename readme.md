@@ -1,20 +1,20 @@
-Welcome to Northwind SPA
+<b>Welcome to Northwind SPA</b>
 
 To install dependencies, run:
 
-npm install
+	<b>npm install</b>
 
 To seed database, run:
 
-node seed
+	<b>node seed</b>
 
 To run application, run:
 
-npm start
+	<b>npm start</b>
 
 To view in browser, visit:
 
-localhost:3000
+	<b>localhost:3000</b>
 
 
 Enjoy!
