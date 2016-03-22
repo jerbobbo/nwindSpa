@@ -15,7 +15,10 @@ router.get('/items', function(req, res, next) {
 });
 
 router.post('/addItem', function(req, res, next) {
-	Item.create({name: req.body.name, priority: req.body.priority});
+	Item.create({name: req.body.name, priority: req.body.priority})
+	.then(function(newItem) {
+		res.send(newItem);
+	});
 });
 
 module.exports = router;

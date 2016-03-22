@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var morgan = require('morgan');
 var path = require('path');
-var bodyParser = req.bodyParser;
+var bodyParser = require('body-parser');
 
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '/public')));

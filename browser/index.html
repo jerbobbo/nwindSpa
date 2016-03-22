@@ -9,20 +9,26 @@
 <body>
 <div class="container col-sm-10" ng-app="myApp" ng-controller="mainController">
 	<h3>Welcome to NWind SPA</h3>
-	<form id="item_adder" action="/addItem" method="post">
+	<form id="item_adder">
 		<div class="form-group">
 			<label for="name_input">Name</label>
-			<input class="form-control" name="name" id="name_input"></input>
+			<input class="form-control" ng-model="newName" id="name_input"></input>
 			<label for="priority_input">Priority</label>
-			<input class="form-control" name="priority" id="priority_input"></input>
+			<input class="form-control" ng-model="newPriority" id="priority_input"></input>
 			<div class="form-group">
-			<button class="btn btn-primary" type="submit">Add</button>
+			<button class="btn btn-primary" ng-click="addItem()">Add</button>
 			</div>
 		</div>
 	</form>
 
 	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="item in items | orderBy:'priority' track by item._id">{{item.name}}<span class="badge">{{item.priority}}</span></li>
+		<li class="list-group-item" ng-repeat="item in items | orderBy:'priority' track by item._id">{{item.name}}
+			<span class="pull-right">
+				<button class="btn btn-sm btn-success" ng-hide="$index === 0">^</button>
+				<button class="btn btn-sm btn-info" ng-hide="$index === items.length-1">v</button>
+				<span class="badge">{{item.priority}}</span>
+			</span>
+		</li>
 	</ul>
 
 </div>
