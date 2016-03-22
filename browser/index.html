@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+	<title>Northwind Spa</title>
+</head>
+<body>
+<div class="container col-sm-10" ng-app="myApp" ng-controller="mainController">
+	<h3>Welcome to NWind SPA</h3>
+	<form id="item_adder" action="/addItem" method="post">
+		<div class="form-group">
+			<label for="name_input">Name</label>
+			<input class="form-control" name="name" id="name_input"></input>
+			<label for="priority_input">Priority</label>
+			<input class="form-control" name="priority" id="priority_input"></input>
+			<div class="form-group">
+			<button class="btn btn-primary" type="submit">Add</button>
+			</div>
+		</div>
+	</form>
+
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="item in items | orderBy:'priority' track by item._id">{{item.name}}<span class="badge">{{item.priority}}</span></li>
+	</ul>
+
+</div>
+
+<script src="/vendor/angular/angular.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
